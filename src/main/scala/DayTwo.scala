@@ -31,3 +31,43 @@ object DayTwo_part1 extends App {
 
   println(input)
 }
+
+object DayTwo_part2 extends App {
+
+  private def calculateShape(str: String): Int = {
+    val opponent :: mine = str.split(' ').toList
+    val chosenPoint = mine.head.toUpperCase match {
+      case "X" => 0
+      case "Y" => 3
+      case "Z" => 6
+    }
+    val shape = (opponent.toUpperCase, mine.head.toUpperCase) match {
+      case ("A", "X") => "Z"
+      case ("A", "Y") => "X"
+      case ("A", "Z") => "Y"
+      case ("B", "X") => "X"
+      case ("B", "Y") => "Y"
+      case ("B", "Z") => "Z"
+      case ("C", "X") => "Y"
+      case ("C", "Y") => "Z"
+      case ("C", "Z") => "X"
+    }
+    val points = shape match {
+      case "X" => 1
+      case "Y" => 2
+      case "Z" => 3
+    }
+
+    chosenPoint + points
+  }
+
+  val input = Source
+    .fromFile("src/resources/day2")
+    .mkString
+    .split("\n")
+    .toList
+    .map(calculateShape)
+    .sum
+
+  println(input)
+}
