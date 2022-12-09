@@ -21,15 +21,14 @@ object DayTwo_part1 extends App {
 
     chosenPoint + winnerPoints
   }
-  val input = Source
+  val result = Reader
     .fromFile("src/resources/day2")
-    .mkString
     .split("\n")
     .toList
     .map(calculatePoints)
     .sum
 
-  println(input)
+  println(result)
 }
 
 object DayTwo_part2 extends App {
@@ -61,13 +60,12 @@ object DayTwo_part2 extends App {
     chosenPoint + points
   }
 
-  val input = Source
+  val result = Reader
     .fromFile("src/resources/day2")
-    .mkString
     .split("\n")
     .toList
     .map(calculateShape)
     .sum
 
-  println(input)
+  println(result)
 }
